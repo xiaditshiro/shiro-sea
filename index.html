@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan - Shiro & Sea</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff0f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      text-align: center;
+    }
+    header {
+      background-color: #ff8fb1;
+      color: white;
+      padding: 2rem 1rem;
+    }
+    section {
+      padding: 2rem 1rem;
+    }
+    .guest {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+    .countdown {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      color: #b91c1c;
+    }
+    .gallery img {
+      width: 100%;
+      max-width: 300px;
+      margin: 1rem;
+      border-radius: 12px;
+    }
+    .map {
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      border: 0;
+      margin: 2rem auto;
+    }
+    .btn-rsvp {
+      background-color: #ff8fb1;
+      color: white;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Undangan Pernikahan</h1>
+    <h2>Shiro & Sea</h2>
+    <p class="guest">Yth. <span id="guestName">Tamu Undangan</span></p>
+    <p>Dengan segala hormat, kami mengundang Anda untuk hadir di acara pernikahan kami.</p>
+  </header>
+
+  <section>
+    <h3>📅 Tanggal: 20 Juli 2025</h3>
+    <h3>📍 Lokasi: The Ulu Cliffhouse, Bali</h3>
+    <div class="countdown" id="countdown"></div>
+    <a class="btn-rsvp" href="https://wa.me/6281234567890?text=Halo%2C%20saya%20akan%20hadir%20di%20acara%20Shiro%20%26%20Sea">Konfirmasi Kehadiran (RSVP)</a>
+  </section>
+
+  <section class="gallery">
+    <h3>📸 Galeri</h3>
+    <img src="https://via.placeholder.com/300x200?text=Foto+1" alt="Foto 1">
+    <img src="https://via.placeholder.com/300x200?text=Foto+2" alt="Foto 2">
+  </section>
+
+  <section>
+    <h3>📍 Lokasi Acara</h3>
+    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.5647462033933!2d115.08999317485402!3d-8.829238491317588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2489b2c78040b%3A0x2d325c319b8f17b4!2sUlu%20Cliffhouse!5e0!3m2!1sid!2sid!4v1683522718893!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <script>
+    // Ambil nama tamu dari URL
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('to');
+    if (name) {
+      document.getElementById('guestName').innerText = decodeURIComponent(name);
+    }
+
+    // Countdown Timer
+    const countDownDate = new Date("Jul 20, 2025 10:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    const updateCountdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+
+      if (distance < 0) {
+        clearInterval(updateCountdown);
+        countdownEl.innerText = "Acara telah berlangsung.";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerText = `⏳ ${days} hari ${hours} jam ${minutes} menit ${seconds} detik lagi`;
+    }, 1000);
+  </script>
+</body>
+</html>
