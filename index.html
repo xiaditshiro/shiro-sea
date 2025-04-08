@@ -80,6 +80,15 @@
     <h3>📍 Lokasi Acara</h3>
     <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.5647462033933!2d115.08999317485402!3d-8.829238491317588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2489b2c78040b%3A0x2d325c319b8f17b4!2sUlu%20Cliffhouse!5e0!3m2!1sid!2sid!4v1683522718893!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
   </section>
+  
+
+
+
+
+
+  
+  
+
 
   <script>
     // Ambil nama tamu dari URL
@@ -111,15 +120,17 @@
       countdownEl.innerText = `⏳ ${days} hari ${hours} jam ${minutes} menit ${seconds} detik lagi`;
     }, 1000);
   </script>
-<audio id="backsound" autoplay loop>
-    <source src="CAMO%20-%20Life%20is%20Wet%20(feat.%20JMIN)%20%5BOfficial%20Music%20Video%5D.mp3" type="audio/mpeg">
-    Browser Anda tidak mendukung audio.
+<audio id="backsound" autoplay loop hidden>
+    <source src="music/mylove.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung elemen audio.
   </audio>
   
   <script>
+    // Autoplay hanya bisa dijalankan setelah interaksi user di browser modern
     window.addEventListener('click', function () {
-      const audio = document.getElementById('backsound');
-      audio.play().catch(() => {});
+      document.getElementById('backsound').play().catch((e) => {
+        console.log('Autoplay gagal:', e);
+      });
     }, { once: true });
   </script>
   
