@@ -111,5 +111,17 @@
       countdownEl.innerText = `⏳ ${days} hari ${hours} jam ${minutes} menit ${seconds} detik lagi`;
     }, 1000);
   </script>
+<audio id="backsound" autoplay loop>
+    <source src="CAMO%20-%20Life%20is%20Wet%20(feat.%20JMIN)%20%5BOfficial%20Music%20Video%5D.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung audio.
+  </audio>
+  
+  <script>
+    window.addEventListener('click', function () {
+      const audio = document.getElementById('backsound');
+      audio.play().catch(() => {});
+    }, { once: true });
+  </script>
+  
 </body>
 </html>
